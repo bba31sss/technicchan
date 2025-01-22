@@ -15,6 +15,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
+     <script>
+  var CLIENT_ID = '184836744474-rlrevis7t6uo63ebf7mhob5aohl8e6ni.apps.googleusercontent.com';
+  var API_KEY = 'AIzaSyCGSK7XTaqmvpoGfp6Yw1rGMeqeHBk_LZk';
+  var VIEW_ID = '403576499';  // VIEW_ID จาก Google Analytics
+
+  // โหลด Google API Client
+  function loadClient() {
+    gapi.client.setApiKey(API_KEY);
+    return gapi.client.load('https://analyticsreporting.googleapis.com/$discovery/rest?version=v4')
+      .then(function() {
+        console.log("GAPI client loaded for API");
+      }, function(error) {
+        console.log("Error loading GAPI client for API", error);
+      });
+  }
+
+  // ดึงข้อมูล Page Views
+  function getPageViews() {
+    var request = {
+      'reportRequests': [
+        {
+          'viewId': VIEW_ID,
+          'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
+          'metrics': [{'expression': 'ga:pageviews'}]
+        }
+      ]
+    };
+
+    gapi.client.analyticsreporting.reports.batchGet(request)
+      .then(function(response) {
+        var pageViews = response.result.reports[0].data.totals[0].values[0];
+        document.getElementById("pageviews").innerText = "Page Views: " + pageViews;
+      }, function(error) {
+        console.log("Error fetching analytics data", error);
+      });
+  }
+
+  // เริ่มต้นการทำงาน
+  function init() {
+    gapi.load('client:auth2', function() {
+      gapi.auth2.init({
+        client_id: CLIENT_ID
+      }).then(function() {
+        loadClient().then(function() {
+          getPageViews();
+        });
+      });
+    });
+  }
+</script>
+
         * {
             margin: 0;
             padding: 0;
@@ -285,6 +336,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     gtag('config', 'G-E9HV2XB83Q');
   </script>
 </head>
+<div id="pageviews">Loading page views...</div>
+<button onclick="init()">Load Page Views</button>
 
     <!-- ส่วนท้าย -->
     <footer>
