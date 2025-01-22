@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สมัครเรียน</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Mitr', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Mitr', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            font-size: min(4vw, 16px); /* ปรับขนาดข้อความ */
         }
         /* ส่วนหัว */
         header {
@@ -21,77 +27,203 @@
             text-align: center;
             padding: 20px 0;
         }
+
         header img {
             width: 100%;
-            height: 300px;
+            height: auto;
+            max-height: 300px;
             object-fit: cover;
         }
+		
 
-        /* เมนู */
+/* เอฟเฟกต์เมื่อโฮเวอร์ */
+header img:hover {
+    transform: scale(1.05); /* ขยายภาพเมื่อโฮเวอร์ */
+}
+
+  /* เมนู */
         nav {
-            background-color: #003366;
-            padding: 15px 0;
-        }
-        .menu {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .menu > li {
+            background: #003366;
             position: relative;
-            margin: 0 15px;
+          
         }
-        .menu > li > a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-            padding: 10px 15px;
+
+        .menu-toggle {
             display: flex;
             align-items: center;
-            transition: background-color 0.3s, color 0.3s;
-            border-radius: 20px;
-        }
-        .menu > li > a i {
-            margin-right: 8px;
+            justify-content: space-between;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
             font-size: 1.5rem;
         }
-        .menu > li > a:hover {
-            background-color: #FFD700;
-            color: #003366;
+
+        .menu-toggle i {
+            font-size: 1.8rem;
         }
-        .submenu {
+
+        .menu {
             display: none;
+            flex-direction: column;
+            background: #003366;
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #ffffff;
-            padding: 10px 0;
-            list-style: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            width: 100%;
+            z-index: 10;
         }
-        .submenu li {
-            margin: 0;
-        }
-        .submenu li a {
+
+        .menu a {
             text-decoration: none;
-            color: #003366;
-            font-size: 1rem;
+            color: white;
             padding: 10px 20px;
-            display: block;
-            transition: background-color 0.3s, color 0.3s;
+            border-bottom: 1px solid #444;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+            font-size: min(4vw, 16px);
+            border-radius: 5px;
+            gap: 10px;
         }
-        .submenu li a:hover {
+
+        .menu a:hover {
             background-color: #FFD700;
             color: #003366;
         }
-        .dropdown:hover .submenu {
-            display: block;
+
+        .submenu {
+            display: none;
+            flex-direction: column;
+            background: #002244;
         }
 
-        /* ส่วนกลาง */
+        .submenu a {
+            border-top: 1px solid #444;
+        }
+
+        .submenu a:hover {
+            background-color: #FFD700;
+            color: #003366;
+        }
+
+
+        /* เนื้อหา */
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: min(6vw, 24px); /* ปรับขนาดหัวข้อ */
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: min(4vw, 16px); /* ปรับขนาดข้อความในพารากราฟ */
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+       .content img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* เพิ่มขอบโค้งให้ภาพ */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ภาพ */
+    transition: transform 0.3s ease, filter 0.3s ease; /* เพิ่มการเปลี่ยนแปลงเมื่อตัวภาพถูกโฮเวอร์ */
+}
+
+/* เอฟเฟกต์เมื่อโฮเวอร์ */
+.content img:hover {
+    transform: scale(1.05); /* ขยายภาพเมื่อโฮเวอร์ */
+    filter: brightness(1.2); /* ปรับความสว่างให้เพิ่มขึ้นเมื่อโฮเวอร์ */
+}
+
+        /* ส่วนท้าย */
+        footer {
+            background: #002855;
+            color: white;
+            padding: 10px 0;
+        }
+
+        footer .social-icons {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: min(6vw, 24px); /* ปรับขนาดไอคอนโซเชียล */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #FFD700;
+        }
+
+        footer .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        footer .contact-info .info-item {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            font-size: min(3vw, 14px); /* ปรับขนาดข้อความในฟุตเตอร์ */
+        }
+
+        footer .contact-info .info-item i {
+            margin-right: 10px;
+            font-size: min(3vw, 18px); /* ปรับขนาดไอคอนในฟุตเตอร์ */
+        }
+
+        footer .contact-info .info-item span {
+            line-height: 1.5;
+        }
+
+        footer .copyright {
+            text-align: center;
+            font-size: min(3vw, 12px); /* ปรับขนาดข้อความในส่วนท้าย */
+            margin-top: 10px;
+            color: #bbb;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none; /* ซ่อนปุ่ม hamburger บนหน้าจอใหญ่ */
+            }
+
+            .menu {
+                display: flex; /* แสดงเมนูแนวนอน */
+                flex-direction: row;
+                position: static;
+                width: auto;
+                border: none;
+            }
+
+            .menu a {
+                border: none;
+            }
+        }
+
+        /* เพิ่มคลาสนี้ให้เมนูแสดง */
+        .menu.show {
+            display: flex;
+        }
+
+        .submenu.show {
+            display: flex; /* แสดงเมนูย่อยเมื่อคลิก */
+        }
+		
+           /* ส่วนกลาง */
         .container {
             text-align: center;
             padding: 40px;
@@ -111,91 +243,72 @@
             background-color: #000;
         }
 
-        /* ส่วนท้าย */
-        footer {
-            background: #002855;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .link-button {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
         }
-        footer .social-icons {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        footer .social-icons a {
-            color: white;
-            margin: 0 10px;
-            font-size: 2rem;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer .social-icons a:hover {
-            color: #FFD700;
-        }
-        footer .contact-info {
-            margin-top: 20px;
-            font-size: 1rem;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        footer .contact-info .info-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        footer .contact-info .info-item i {
-            font-size: 1.2rem;
-        }
-        footer .contact-info .info-item span {
-            font-size: 1rem;
-            color: #bbb;
-        }
+ 
     </style>
 </head>
 <body>
+
     <!-- ส่วนหัว -->
-<header>
-        <h1><img src="หัวเว็บ3.jpg" alt="ภาพหัวเว็บ"></h1>
+    <header>
+        <h1>
+            <picture>
+                <!-- สำหรับหน้าจอมือถือ (ขนาดหน้าจอเล็กกว่า 768px) -->
+                <source media="(max-width: 768px)" srcset="หัวเว็บมือถือ.jpg">
+                <!-- สำหรับหน้าจอคอมพิวเตอร์ (ขนาดหน้าจอใหญ่กว่า 768px) -->
+                <source media="(min-width: 769px)" srcset="หัวเว็บ3.jpg">
+                <!-- รูปหลักที่จะใช้ถ้าไม่ตรงกับเงื่อนไขด้านบน -->
+                <img src="มือถือ.jpg" alt="ภาพหัวเว็บ">
+            </picture>
+        </h1>
     </header>
 
     <!-- เมนู -->
     <nav>
-        <ul class="menu">
-            <li><a href="index.html"><i class="fas fa-home"></i> หน้าหลัก</a></li>
-            <li><a href="about.html"><i class="fas fa-user"></i> เกี่ยวกับ</a></li>
-            <li><a href="contact.html"><i class="fas fa-phone-alt"></i> ข้อมูลติดต่อ</a></li>
-            <li class="dropdown">
-                <a href="apply.html"><i class="fas fa-clipboard-list"></i> สมัครเรียน</a>
-                <ul class="submenu">
-                    <li><a href="https://admission.vec.go.th/web/Login.htm?mode=manual">คู่มือการสมัคร</a></li>
-                    <li><a href="apply.html">สมัครเรียนออนไลน์</a></li>
-                </ul>
-            </li>
-            <li><a href="courses.html"><i class="fas fa-book"></i> สาขาแผนก</a></li>
-        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span>เมนู</span>
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="menu" id="menu">
+            <a href="index.html"><i class="fas fa-home"></i> หน้าหลัก</a>
+            <a href="about.html"><i class="fa-solid fa-user"></i> เกี่ยวกับ</a>
+            <a href="contact.html"><i class="fas fa-phone-alt"></i> ข้อมูลติดต่อ</a>
+            <a href="apply.html" onclick="toggleSubMenu(event)"><i class="fas fa-clipboard-list"></i> สมัครเรียน</a>
+            <div class="submenu" id="submenu">
+                <a href="apply.html"><i class="fas fa-laptop"></i> สมัครเรียนออนไลน์</a>
+                <a href="https://admission.vec.go.th/web/Login.htm?mode=manual"><i class="fas fa-book"></i> คู่มือการสมัครเรียน</a>
+            </div>
+            <a href="courses.html"><i class="fa-solid fa-book"></i> สาขาแผนก</a>
+        </div>
     </nav>
 
-    <!-- ส่วนกลาง -->
-    <div class="container">
-      <h2>สมัครเข้าศึกษา</h2>
+   <div class="container">
+        <h2>สมัครเข้าศึกษา</h2>
         <p>กรุณาคลิกที่ด้านล่างเพื่อไปยังฟอร์มการสมัครเรียน</p>
-        <p> <a href="https://admission.vec.go.th/web/Login.htm?mode=index&fbclid=IwAR1IbIm8OA8cvajQQN_Vi_zvUZyIGLwkk4VaAhUsKb48jhBeBjfPEwO4ieE" class="link-button">สมัครเรียน</a> </p>
+        <a href="https://admission.vec.go.th/web/Login.htm?mode=index&fbclid=IwAR1IbIm8OA8cvajQQN_Vi_zvUZyIGLwkk4VaAhUsKb48jhBeBjfPEwO4ieE" class="link-button">
+            สมัครเรียน
+        </a>
     </div>
 
     <!-- ส่วนท้าย -->
     <footer>
         <div class="social-icons">
             <a href="https://www.facebook.com/technicchan.ac.th" class="fab fa-facebook"></a>
-            <a href="https://www.tiktok.com/@youraccount" class="fab fa-tiktok"></a>
+            <a href="https://www.tiktok.com/@technicchan" class="fab fa-tiktok"></a>
             <a href="https://www.instagram.com/technicchan_official" class="fab fa-instagram"></a>
         </div>
 
-        <!-- ข้อมูลติดต่อ -->
         <div class="contact-info">
             <div class="info-item">
                 <i class="fas fa-map-marker-alt"></i>
@@ -210,6 +323,26 @@
                 <span>E-mail: saraban@technicchan.ac.th</span>
             </div>
         </div>
+
+        <div class="copyright">
+            <p>&copy; 2024 วิทยาลัยเทคนิคจันทบุรี</p>
+        </div>
     </footer>
+
+    <script>
+        // ฟังก์ชันสำหรับเปิด/ปิดเมนู
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        // ฟังก์ชันสำหรับเปิด/ปิดเมนูย่อยในสมัครเรียน
+        function toggleSubMenu(event) {
+            event.preventDefault(); // ป้องกันการเปลี่ยนเส้นทางเมื่อคลิก
+            const submenu = document.getElementById('submenu');
+            submenu.classList.toggle('show');
+        }
+    </script>
+
 </body>
 </html>
