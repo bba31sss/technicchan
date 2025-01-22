@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>วิทยาละ</title>
-    <!-- เพิ่มการโหลด Font Awesome สำหรับไอคอน -->
+    <title>วิทยาลัยเทคนิคจันทบุรี</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- เพิ่มการโหลดฟอนต์ Mitr -->
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -17,156 +15,145 @@
         }
 
         body {
-            font-family: 'Mitr', sans-serif; /* ใช้ฟอนต์ Mitr */
+            font-family: 'Mitr', sans-serif;
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0;
             background-color: #f4f4f4;
+            font-size: min(4vw, 16px); /* ปรับขนาดข้อความ */
         }
-
         /* ส่วนหัว */
         header {
             background: #002855;
             color: white;
             text-align: center;
             padding: 20px 0;
-            width: 100%;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
         }
 
         header img {
             width: 100%;
-            height: 300px;
+            height: auto;
+            max-height: 300px;
             object-fit: cover;
         }
 
-        /* เมนู */
+/* เอฟเฟกต์เมื่อโฮเวอร์ */
+header img:hover {
+    transform: scale(1.05); /* ขยายภาพเมื่อโฮเวอร์ */
+}
+
+  /* เมนู */
         nav {
             background: #003366;
-            width: 100%;
-            padding: 15px 0;
-            text-align: center;
             position: relative;
+          
         }
 
-        /* ปุ่มแปลภาษา */
-        .language-selector {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .language-selector select {
-            padding: 10px;
-            font-size: 1rem;
-            color: #003366;
-            background: white;
-            border: 1px solid #003366;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        nav ul {
-            list-style: none;
+        .menu-toggle {
             display: flex;
-            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
         }
 
-        nav ul li {
-            margin: 0 30px;
-            position: relative;
-            font-size: 1.2rem;
+        .menu-toggle i {
+            font-size: 1.8rem;
         }
 
-        nav ul li a {
+        .menu {
+            display: none;
+            flex-direction: column;
+            background: #003366;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .menu a {
             text-decoration: none;
             color: white;
             padding: 10px 20px;
-            display: inline-block;
+            border-bottom: 1px solid #444;
+            display: flex;
+            align-items: center;
             transition: background-color 0.3s;
-            border-radius: 20px;
-            border: 2px solid transparent;
+            font-size: min(4vw, 16px);
+            border-radius: 5px;
+            gap: 10px;
         }
 
-        nav ul li a:hover {
+        .menu a:hover {
             background-color: #FFD700;
             color: #003366;
         }
 
-        nav ul li i {
-            margin-right: 8px;
-        }
-
-        nav ul li ul {
+        .submenu {
             display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #003366;
-            padding: 10px 0;
-            list-style: none;
+            flex-direction: column;
+            background: #002244;
         }
 
-        nav ul li:hover ul {
-            display: block;
+        .submenu a {
+            border-top: 1px solid #444;
         }
 
-        nav ul li ul li {
-            margin: 0;
+        .submenu a:hover {
+            background-color: #FFD700;
+            color: #003366;
         }
 
-        /* ส่วนเนื้อหา */
+
+        /* เนื้อหา */
         .content {
-            padding: 50px 20px;
+            padding: 20px;
             text-align: center;
         }
 
         .content h2 {
-            font-size: 2rem;
+            font-size: min(6vw, 24px); /* ปรับขนาดหัวข้อ */
             margin-bottom: 20px;
         }
 
         .content p {
-            font-size: 1.1rem;
+            font-size: min(4vw, 16px); /* ปรับขนาดข้อความในพารากราฟ */
             color: #555;
             margin-bottom: 20px;
         }
 
-        .content img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
+       .content img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* เพิ่มขอบโค้งให้ภาพ */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ภาพ */
+    transition: transform 0.3s ease, filter 0.3s ease; /* เพิ่มการเปลี่ยนแปลงเมื่อตัวภาพถูกโฮเวอร์ */
+}
+
+/* เอฟเฟกต์เมื่อโฮเวอร์ */
+.content img:hover {
+    transform: scale(1.05); /* ขยายภาพเมื่อโฮเวอร์ */
+    filter: brightness(1.2); /* ปรับความสว่างให้เพิ่มขึ้นเมื่อโฮเวอร์ */
+}
 
         /* ส่วนท้าย */
         footer {
             background: #002855;
             color: white;
-            text-align: center;
-            padding: 20px 0;
-            width: 100%;
-            position: relative;
+            padding: 10px 0;
         }
 
-        /* ปุ่มโซเชียล */
         footer .social-icons {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            text-align: center;
+            margin-bottom: 10px;
         }
 
         footer .social-icons a {
             color: white;
             margin: 0 10px;
-            font-size: 2rem;
+            font-size: min(6vw, 24px); /* ปรับขนาดไอคอนโซเชียล */
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -175,80 +162,117 @@
             color: #FFD700;
         }
 
-        /* ข้อมูลติดต่อ */
         footer .contact-info {
-            margin-top: 20px;
-            font-size: 1rem;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px 20px;
+            margin: 0 auto;
+            max-width: 600px;
         }
 
         footer .contact-info .info-item {
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            font-size: min(3vw, 14px); /* ปรับขนาดข้อความในฟุตเตอร์ */
         }
 
         footer .contact-info .info-item i {
-            font-size: 1.2rem;
+            margin-right: 10px;
+            font-size: min(3vw, 18px); /* ปรับขนาดไอคอนในฟุตเตอร์ */
         }
 
         footer .contact-info .info-item span {
-            font-size: 1rem;
-            color: #bbb;
+            line-height: 1.5;
         }
 
-        /* ข้อความ © 2025 อยู่ด้านล่าง */
         footer .copyright {
-            font-size: 0.8rem;
-            margin-top: 30px;
+            text-align: center;
+            font-size: min(3vw, 12px); /* ปรับขนาดข้อความในส่วนท้าย */
+            margin-top: 10px;
             color: #bbb;
         }
 
+        /* Responsive */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none; /* ซ่อนปุ่ม hamburger บนหน้าจอใหญ่ */
+            }
+
+            .menu {
+                display: flex; /* แสดงเมนูแนวนอน */
+                flex-direction: row;
+                position: static;
+                width: auto;
+                border: none;
+            }
+
+            .menu a {
+                border: none;
+            }
+        }
+
+        /* เพิ่มคลาสนี้ให้เมนูแสดง */
+        .menu.show {
+            display: flex;
+        }
+
+        .submenu.show {
+            display: flex; /* แสดงเมนูย่อยเมื่อคลิก */
+        }
     </style>
 </head>
 <body>
 
     <!-- ส่วนหัว -->
     <header>
-        <h1><img src="หัวเว็บ3.jpg" alt="ภาพหัวเว็บ"></h1>
+        <h1>
+            <picture>
+                <!-- สำหรับหน้าจอมือถือ (ขนาดหน้าจอเล็กกว่า 768px) -->
+                <source media="(max-width: 768px)" srcset="หัวเว็บมือถือ.jpg">
+                <!-- สำหรับหน้าจอคอมพิวเตอร์ (ขนาดหน้าจอใหญ่กว่า 768px) -->
+                <source media="(min-width: 769px)" srcset="หัวเว็บ3.jpg">
+                <!-- รูปหลักที่จะใช้ถ้าไม่ตรงกับเงื่อนไขด้านบน -->
+                <img src="มือถือ.jpg" alt="ภาพหัวเว็บ">
+            </picture>
+        </h1>
     </header>
-    
-    <!-- ฟอร์มแปลภาษา --><!-- เมนู -->
+
+    <!-- เมนู -->
     <nav>
-        <ul>
-            <li><a href="index.html"><i class="fas fa-home"></i> หน้าหลัก</a></li>
-            <li><a href="about.html"><i class="fa-solid fa-user"></i> เกี่ยวกับ</a></li>
-            <li><a href="contact.html"><i class="fas fa-phone-alt"></i> ข้อมูลติดต่อ</a></li>
-            <li><a href="apply.html"><i class="fas fa-clipboard-list"></i> สมัครเรียน</a>
-                <ul>
-                    <li><a href="#">คู่มือการสมัคร</a></li>
-                    <li><a href="apply.html">สมัครเรียนออนไลน์</a></li>
-                </ul>
-            </li>
-            <li><a href="courses.html"><i class="fa-solid fa-book"></i> สาขาแผนก</a></li>
-        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span>เมนู</span>
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="menu" id="menu">
+            <a href="index.html"><i class="fas fa-home"></i> หน้าหลัก</a>
+            <a href="about.html"><i class="fa-solid fa-user"></i> เกี่ยวกับ</a>
+            <a href="contact.html"><i class="fas fa-phone-alt"></i> ข้อมูลติดต่อ</a>
+            <a href="apply.html" onclick="toggleSubMenu(event)"><i class="fas fa-clipboard-list"></i> สมัครเรียน</a>
+            <div class="submenu" id="submenu">
+                <a href="apply.html"><i class="fas fa-laptop"></i> สมัครเรียนออนไลน์</a>
+                <a href="https://admission.vec.go.th/web/Login.htm?mode=manual"><i class="fas fa-book"></i> คู่มือการสมัครเรียน</a>
+            </div>
+            <a href="courses.html"><i class="fa-solid fa-book"></i> สาขาแผนก</a>
+        </div>
     </nav>
 
     <!-- เนื้อหา -->
     <div class="content">
         <h2>ยินดีต้อนรับสู่วิทยาลัยเทคนิคจันทบุรี</h2>
         <p>สถาบันการอาชีวศึกษาภาคตะวันออก<br>สำนักงานคณะกรรมการการอาชีวศึกษา กระทรวงศึกษาธิการ</p>
-        <p>เรามีคณาจารย์ที่มีความเชี่ยวชาญจากหลากหลายสาขาวิชา และพร้อมที่จะมอบความรู้และประสบการณ์ที่ดีที่สุดให้กับนักศึกษา</p>
+        <img src="technic (1).png" alt="ภาพเพิ่มเติม">
     </div>
 
     <!-- ส่วนท้าย -->
-    <span class="info-item"><span class="content"><img src="technic (1).png" width="718" height="367"></span></span>
     <footer>
         <div class="social-icons">
-          <a href="https://www.facebook.com/technicchan.ac.th" class="fab fa-facebook"></a>
-          <a href="https://www.tiktok.com/@youraccount" class="fab fa-tiktok"></a>
-          <a href="https://www.instagram.com/technicchan_official" class="fab fa-instagram"></a>
-      </div>
+            <a href="https://www.facebook.com/technicchan.ac.th" class="fab fa-facebook"></a>
+            <a href="https://www.tiktok.com/@technicchan" class="fab fa-tiktok"></a>
+            <a href="https://www.instagram.com/technicchan_official" class="fab fa-instagram"></a>
+        </div>
 
-        <!-- ข้อมูลติดต่อ -->
         <div class="contact-info">
             <div class="info-item">
                 <i class="fas fa-map-marker-alt"></i>
@@ -259,35 +283,28 @@
                 <span>โทรศัพท์: 0-3931-1198</span>
             </div>
             <div class="info-item">
-                <i class="fas fa-fax"></i>
-                <span>โทรสาร: 0-3931-1699</span>
-            </div>
-            <div class="info-item">
                 <i class="fas fa-envelope"></i>
                 <span>E-mail: saraban@technicchan.ac.th</span>
             </div>
         </div>
 
-        <!-- ข้อความ © 2025 -->
         <div class="copyright">
             <p>&copy; 2024 วิทยาลัยเทคนิคจันทบุรี</p>
         </div>
     </footer>
 
-    <!-- สคริปต์การเปลี่ยนภาษา -->
     <script>
-        function changeLanguage(language) {
-            if (language === 'en') {
-                document.querySelector("header h1").textContent = "Sample University";
-                document.querySelector(".content h2").textContent = "Welcome to Sample University";
-                document.querySelector(".content p").textContent = "We are a leading educational institution with a goal to develop students with knowledge, skills, and abilities to thrive in a rapidly changing world.";
-                document.querySelector("footer .copyright p").textContent = "&copy; 2025 Sample University";
-            } else {
-                document.querySelector("header h1").textContent = "มหาวิทยาลัยตัวอย่าง";
-                document.querySelector(".content h2").textContent = "ยินดีต้อนรับสู่มหาวิทยาลัยตัวอย่าง";
-                document.querySelector(".content p").textContent = "เราเป็นสถาบันการศึกษาชั้นนำที่มีเป้าหมายในการพัฒนานักศึกษาให้มีความรู้ ความสามารถ และทักษะที่พร้อมสำหรับการทำงานในโลกแห่งการเปลี่ยนแปลงที่รวดเร็ว";
-                document.querySelector("footer .copyright p").textContent = "&copy; 2025 มหาวิทยาลัยตัวอย่าง";
-            }
+        // ฟังก์ชันสำหรับเปิด/ปิดเมนู
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        // ฟังก์ชันสำหรับเปิด/ปิดเมนูย่อยในสมัครเรียน
+        function toggleSubMenu(event) {
+            event.preventDefault(); // ป้องกันการเปลี่ยนเส้นทางเมื่อคลิก
+            const submenu = document.getElementById('submenu');
+            submenu.classList.toggle('show');
         }
     </script>
 
