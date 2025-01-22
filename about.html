@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เกี่ยวกับ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Mitr', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        /* ส่วนหัว */
+        header {
+            background: #002855;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* เมนู */
+        nav {
+            background-color: #003366;
+            padding: 15px 0;
+        }
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .menu > li {
+            position: relative;
+            margin: 0 15px;
+        }
+        .menu > li > a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 20px;
+        }
+        .menu > li > a i {
+            margin-right: 8px;
+            font-size: 1.5rem;
+        }
+        .menu > li > a:hover {
+            background-color: #FFD700;
+            color: #003366;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            padding: 10px 0;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .submenu li {
+            margin: 0;
+        }
+        .submenu li a {
+            text-decoration: none;
+            color: #003366;
+            font-size: 1rem;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .submenu li a:hover {
+            background-color: #FFD700;
+            color: #003366;
+        }
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        /* ส่วนกลาง */
+        .main-content {
+            padding: 40px;
+            text-align: center;
+        }
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+        .contact-info .info-item {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .contact-info .info-item i {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        .contact-info .info-item span {
+            color: #333;
+        }
+
+        /* ส่วนท้าย */
+        footer {
+            background: #002855;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        footer .social-icons {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer .social-icons a:hover {
+            color: #FFD700;
+        }
+        footer .contact-info {
+            margin-top: 20px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        footer .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        footer .contact-info .info-item i {
+            font-size: 1.2rem;
+        }
+        footer .contact-info .info-item span {
+            font-size: 1rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <!-- ส่วนหัว -->
+<header>
+        <h1><img src="หัวเว็บ3.jpg" alt="ภาพหัวเว็บ"></h1>
+    </header>
+
+    <!-- เมนู -->
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> หน้าหลัก</a></li>
+            <li><a href="about.html"><i class="fas fa-user"></i> เกี่ยวกับ</a></li>
+            <li><a href="contact.html"><i class="fas fa-phone-alt"></i> ข้อมูลติดต่อ</a></li>
+            <li class="dropdown">
+                <a href="apply.html"><i class="fas fa-clipboard-list"></i> สมัครเรียน</a>
+                <ul class="submenu">
+                    <li><a href="#">คู่มือการสมัคร</a></li>
+                    <li><a href="apply.html">สมัครเรียนออนไลน์</a></li>
+                </ul>
+            </li>
+            <li><a href="courses.html"><i class="fas fa-book"></i> สาขาแผนก</a></li>
+        </ul>
+    </nav>
+
+    <!-- ส่วนกลาง -->
+<div class="main-content">
+        <h2>วิทยาลัยเทคนิคจันทบุรี (Chanthaburi Technical College)</h2>
+        <p><strong></strong> สถานศึกษาของรัฐ สังกัดสถาบันการอาชีวศึกษาภาคตะวันออก</p>
+        <p><strong></strong> 44/3 ถนนจันทคามวิถี ตำบลตลาด อำเภอเมือง จังหวัดจันทบุรี 22000</p>
+
+    <!-- แสดงภาพของวิทยาลัย -->
+    <img src="../technic.png" alt="ภาพของวิทยาลัยเทคนิคจันทบุรี">
+
+   
+        </div>
+    </div>
+
+    <!-- ส่วนท้าย -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/technicchan.ac.th" class="fab fa-facebook"></a>
+            <a href="https://www.tiktok.com/@youraccount" class="fab fa-tiktok"></a>
+            <a href="https://www.instagram.com/technicchan_official" class="fab fa-instagram"></a>
+        </div>
+
+        <div class="contact-info">
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>85 ซอย จันทคามวิถี ตำบลวัดใหม่ อำเภอเมืองจันทบุรี จันทบุรี 22000</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>โทรศัพท์: 0-3931-1198</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span>E-mail: saraban@technicchan.ac.th</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for copying phone number -->
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = document.getElementById('phone-number').innerText;
+            navigator.clipboard.writeText(phoneNumber.replace('โทรศัพท์: ', '').trim())
+                .then(() => alert('เบอร์โทรศัพท์คัดลอกแล้ว!'))
+                .catch(() => alert('ไม่สามารถคัดลอกเบอร์โทรได้'));
+        }
+    </script>
+</body>
+</html>

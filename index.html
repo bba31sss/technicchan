@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วิทยาละ</title>
+    <!-- เพิ่มการโหลด Font Awesome สำหรับไอคอน -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- เพิ่มการโหลดฟอนต์ Mitr -->
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Mitr', sans-serif; /* ใช้ฟอนต์ Mitr */
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* ส่วนหัว */
+        header {
+            background: #002855;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* เมนู */
+        nav {
+            background: #003366;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* ปุ่มแปลภาษา */
+        .language-selector {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .language-selector select {
+            padding: 10px;
+            font-size: 1rem;
+            color: #003366;
+            background: white;
+            border: 1px solid #003366;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 30px;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
+            border-radius: 20px;
+            border: 2px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background-color: #FFD700;
+            color: #003366;
+        }
+
+        nav ul li i {
+            margin-right: 8px;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #003366;
+            padding: 10px 0;
+            list-style: none;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+        /* ส่วนเนื้อหา */
+        .content {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        /* ส่วนท้าย */
+        footer {
+            background: #002855;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            position: relative;
+        }
+
+        /* ปุ่มโซเชียล */
+        footer .social-icons {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #FFD700;
+        }
+
+        /* ข้อมูลติดต่อ */
+        footer .contact-info {
+            margin-top: 20px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        footer .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        footer .contact-info .info-item i {
+            font-size: 1.2rem;
+        }
+
+        footer .contact-info .info-item span {
+            font-size: 1rem;
+            color: #bbb;
+        }
+
+        /* ข้อความ © 2025 อยู่ด้านล่าง */
+        footer .copyright {
+            font-size: 0.8rem;
+            margin-top: 30px;
+            color: #bbb;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ส่วนหัว -->
+    <header>
+        <h1><img src="หัวเว็บ3.jpg" alt="ภาพหัวเว็บ"></h1>
+    </header>
+    
+    <!-- ฟอร์มแปลภาษา --><!-- เมนู -->
+    <nav>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> หน้าหลัก</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-user"></i> เกี่ยวกับ</a></li>
+            <li><a href="contact.html"><i class="fas fa-phone-alt"></i> ข้อมูลติดต่อ</a></li>
+            <li><a href="apply.html"><i class="fas fa-clipboard-list"></i> สมัครเรียน</a>
+                <ul>
+                    <li><a href="#">คู่มือการสมัคร</a></li>
+                    <li><a href="apply.html">สมัครเรียนออนไลน์</a></li>
+                </ul>
+            </li>
+            <li><a href="courses.html"><i class="fa-solid fa-book"></i> สาขาแผนก</a></li>
+        </ul>
+    </nav>
+
+    <!-- เนื้อหา -->
+    <div class="content">
+        <h2>ยินดีต้อนรับสู่วิทยาลัยเทคนิคจันทบุรี</h2>
+        <p>สถาบันการอาชีวศึกษาภาคตะวันออก<br>สำนักงานคณะกรรมการการอาชีวศึกษา กระทรวงศึกษาธิการ</p>
+        <p>เรามีคณาจารย์ที่มีความเชี่ยวชาญจากหลากหลายสาขาวิชา และพร้อมที่จะมอบความรู้และประสบการณ์ที่ดีที่สุดให้กับนักศึกษา</p>
+    </div>
+
+    <!-- ส่วนท้าย -->
+    <span class="info-item"><span class="content"><img src="technic (1).png" width="718" height="367"></span></span>
+    <footer>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/technicchan.ac.th" class="fab fa-facebook"></a>
+          <a href="https://www.tiktok.com/@youraccount" class="fab fa-tiktok"></a>
+          <a href="https://www.instagram.com/technicchan_official" class="fab fa-instagram"></a>
+      </div>
+
+        <!-- ข้อมูลติดต่อ -->
+        <div class="contact-info">
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>85 ซอย จันทคามวิถี ตำบลวัดใหม่ อำเภอเมืองจันทบุรี จันทบุรี 22000</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>โทรศัพท์: 0-3931-1198</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-fax"></i>
+                <span>โทรสาร: 0-3931-1699</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span>E-mail: saraban@technicchan.ac.th</span>
+            </div>
+        </div>
+
+        <!-- ข้อความ © 2025 -->
+        <div class="copyright">
+            <p>&copy; 2024 วิทยาลัยเทคนิคจันทบุรี</p>
+        </div>
+    </footer>
+
+    <!-- สคริปต์การเปลี่ยนภาษา -->
+    <script>
+        function changeLanguage(language) {
+            if (language === 'en') {
+                document.querySelector("header h1").textContent = "Sample University";
+                document.querySelector(".content h2").textContent = "Welcome to Sample University";
+                document.querySelector(".content p").textContent = "We are a leading educational institution with a goal to develop students with knowledge, skills, and abilities to thrive in a rapidly changing world.";
+                document.querySelector("footer .copyright p").textContent = "&copy; 2025 Sample University";
+            } else {
+                document.querySelector("header h1").textContent = "มหาวิทยาลัยตัวอย่าง";
+                document.querySelector(".content h2").textContent = "ยินดีต้อนรับสู่มหาวิทยาลัยตัวอย่าง";
+                document.querySelector(".content p").textContent = "เราเป็นสถาบันการศึกษาชั้นนำที่มีเป้าหมายในการพัฒนานักศึกษาให้มีความรู้ ความสามารถ และทักษะที่พร้อมสำหรับการทำงานในโลกแห่งการเปลี่ยนแปลงที่รวดเร็ว";
+                document.querySelector("footer .copyright p").textContent = "&copy; 2025 มหาวิทยาลัยตัวอย่าง";
+            }
+        }
+    </script>
+
+</body>
+</html>
