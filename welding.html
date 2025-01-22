@@ -3,40 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แผนกวิชาช่างเชื่อมโลหะ - วิทยาลัยเทคนิคจันทบุรี</title>
+    <title>แผนกช่างเชื่อมโลหะ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Mitr', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Mitr', sans-serif;
+            line-height: 1.6;
             background-color: #f4f4f4;
-            color: #333;
         }
+
+        /* ส่วนหัว */
         header {
-            width: 100%;
-            height: 300px; /* กำหนดความสูงที่เหมาะสม */
-            overflow: hidden;
-        }
-        header img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* ทำให้ภาพแสดงเต็มและครอบคลุมพื้นที่ */
-        }
-        nav {
-            background-color: #555;
-            overflow: hidden;
-        }
-        nav a {
-            float: left;
-            display: block;
+            background: #002855;
             color: white;
             text-align: center;
-            padding: 14px 20px;
+            padding: 20px 0;
+        }
+
+        header img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        /* เมนู */
+        nav {
+            background-color: #003366;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .menu-toggle i {
+            font-size: 1.8rem;
+        }
+
+        .menu {
+            display: none;
+            flex-direction: column;
+            background-color: #003366;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+        }
+
+        .menu.show {
+            display: flex;
+        }
+
+        .menu a {
             text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            border-bottom: 1px solid #444;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+            font-size: min(4vw, 16px);
+            gap: 10px;
         }
-        nav a:hover {
-            background-color: #777;
+
+        .menu a:hover {
+            background-color: #FFD700;
+            color: #003366;
         }
+
+        .submenu {
+            display: none;
+            flex-direction: column;
+            background: #002244;
+            z-index: 30;
+        }
+
+        .submenu.show {
+            display: flex;
+        }
+
+        .submenu a {
+            border-top: 1px solid #444;
+        }
+
+        .submenu a:hover {
+            background-color: #FFD700;
+            color: #003366;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+
+            .menu {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                width: auto;
+                border: none;
+            }
+
+            .menu a {
+                border: none;
+            }
+        }
+
+        /* เนื้อหา */
         section {
             padding: 20px;
             max-width: 1200px;
@@ -45,14 +140,17 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
+
         h1, h2 {
-	color: #444;
-	font-family: Mitr, sans-serif;
+            color: #444;
+            font-family: Mitr, sans-serif;
         }
+
         ul {
             list-style-type: disc;
             padding-left: 20px;
         }
+
         .content {
             border: 1px solid #ddd;
             padding: 20px;
@@ -60,69 +158,181 @@
             border-radius: 8px;
             background-color: #f9f9f9;
         }
+
         .content h3 {
             color: #555;
         }
+
+        /* ส่วนท้าย */
         footer {
-            background-color: #333;
+            background: #002855;
             color: white;
-            text-align: center;
             padding: 10px 0;
-            margin-top: 20px;
+        }
+
+        footer .social-icons {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: min(6vw, 24px);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #FFD700;
+        }
+
+        footer .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px 20px;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        footer .contact-info .info-item {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            font-size: min(3vw, 14px);
+        }
+
+        footer .contact-info .info-item i {
+            margin-right: 10px;
+            font-size: min(3vw, 18px);
+        }
+
+        footer .contact-info .info-item span {
+            line-height: 1.5;
+        }
+
+        footer .copyright {
+            text-align: center;
+            font-size: min(3vw, 12px);
+            margin-top: 10px;
+            color: #bbb;
         }
     </style>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        function toggleSubMenu(event) {
+            event.preventDefault();
+            const submenu = document.getElementById('submenu');
+            submenu.classList.toggle('show');
+        }
+
+        // ตรวจสอบการคลิกนอกเมนูเพื่อปิด
+        document.addEventListener('click', (event) => {
+            const menu = document.getElementById('menu');
+            const submenu = document.getElementById('submenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.remove('show');
+                submenu.classList.remove('show');
+            }
+        });
+    </script>
 </head>
 <body>
+    <header>
+        <h1>
+            <picture>
+                <source media="(max-width: 768px)" srcset="ม4.png">
+                <source media="(min-width: 769px)" srcset="หัวเว็บชื่อแผนก/4ค.png">
+                <img src="4.png" alt="ภาพหัวเว็บ">
+            </picture>
+        </h1>
+    </header>
 
-<header>
-    <img src="../หัวเว็บชื่อแผนก/4.png" alt="ภาพหัวเว็บ">
-</header>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span>เมนู</span>
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="menu" id="menu">
+            <a href="index.html"><i class="fas fa-home"></i> หน้าหลัก</a>
+            <a href="about.html"><i class="fa-solid fa-user"></i> เกี่ยวกับ</a>
+            <a href="contact.html"><i class="fas fa-phone-alt"></i> ข้อมูลติดต่อ</a>
+            <a href="apply.html" onclick="toggleSubMenu(event)"><i class="fas fa-clipboard-list"></i> สมัครเรียน</a>
+            <div class="submenu" id="submenu">
+                <a href="apply.html"><i class="fas fa-laptop"></i> สมัครเรียนออนไลน์</a>
+                <a href="https://admission.vec.go.th/web/Login.htm?mode=manual"><i class="fas fa-book"></i> คู่มือการสมัครเรียน</a>
+            </div>
+            <a href="courses.html"><i class="fa-solid fa-book"></i> สาขาแผนก</a>
+        </div>
+    </nav>
 
-<nav>
-    <a href="index.html">หน้าแรก</a>
-    <a href="about.html">เกี่ยวกับเรา</a>
-    <a href="courses.html">หลักสูตร</a>
-    <a href="contact.html">ติดต่อเรา</a>
-</nav>
+    <section>
+        <div class="content">
+            <h2>ระดับการศึกษา</h2>
+            <p>วิทยาลัยเทคนิคจันทบุรีเปิดสอนในระดับประกาศนียบัตรวิชาชีพ (ปวช.) และประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</p>
+        </div>
 
-<section>
-    <div class="content">
-        <h2>ระดับการศึกษา</h2>
-        <p>วิทยาลัยเทคนิคจันทบุรีเปิดสอนในระดับประกาศนียบัตรวิชาชีพ (ปวช.) และประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</p>
-    </div>
+        <div class="content">
+            <h2>เนื้อหาการเรียนการสอน</h2>
+            <ul>
+                <li><b>การเชื่อมโลหะ:</b> เรียนรู้เทคนิคการเชื่อมโลหะด้วยวิธีต่าง ๆ เช่น การเชื่อมอาร์กไฟฟ้า การเชื่อมแก๊ส และการเชื่อม TIG/MIG</li>
+                <li><b>การเตรียมชิ้นงาน:</b> ฝึกการเตรียมพื้นผิวและชิ้นงานก่อนการเชื่อม</li>
+                <li><b>การควบคุมคุณภาพการเชื่อม:</b> เรียนรู้วิธีการตรวจสอบและควบคุมคุณภาพของรอยเชื่อม</li>
+                <li><b>การอ่านแบบและการวางแผนงานเชื่อม:</b> ฝึกทักษะการอ่านแบบและการวางแผนงานเชื่อมตามแบบที่กำหนด</li>
+            </ul>
+        </div>
 
-    <div class="content">
-        <h2>เนื้อหาการเรียนการสอน</h2>
-        <ul>
-            <li><b>การเชื่อมโลหะ:</b> เรียนรู้เทคนิคการเชื่อมโลหะด้วยวิธีต่าง ๆ เช่น การเชื่อมอาร์กไฟฟ้า การเชื่อมแก๊ส และการเชื่อม TIG/MIG</li>
-            <li><b>การเตรียมชิ้นงาน:</b> ฝึกการเตรียมพื้นผิวและชิ้นงานก่อนการเชื่อม</li>
-            <li><b>การควบคุมคุณภาพการเชื่อม:</b> เรียนรู้วิธีการตรวจสอบและควบคุมคุณภาพของรอยเชื่อม</li>
-            <li><b>การอ่านแบบและการวางแผนงานเชื่อม:</b> ฝึกทักษะการอ่านแบบและการวางแผนงานเชื่อมตามแบบที่กำหนด</li>
-        </ul>
-    </div>
+        <div class="content">
+            <h2>ทักษะที่ผู้เรียนจะได้รับ</h2>
+            <ul>
+                <li>ความเข้าใจในเทคนิคการเชื่อมโลหะ</li>
+                <li>ทักษะการเตรียมชิ้นงานและการควบคุมคุณภาพการเชื่อม</li>
+                <li>ความสามารถในการอ่านแบบและวางแผนงานเชื่อม</li>
+            </ul>
+        </div>
 
-    <div class="content">
-        <h2>ทักษะที่ผู้เรียนจะได้รับ</h2>
-        <ul>
-          <li>ความเข้าใจในเทคนิคการเชื่อมโลหะ</li>
-            <li>ทักษะการเตรียมชิ้นงานและการควบคุมคุณภาพการเชื่อม</li>
-            <li>ความสามารถในการอ่านแบบและวางแผนงานเชื่อม</li>
-        </ul>
-    </div>
+        <div class="content">
+            <h2>แนวทางการประกอบอาชีพ</h2>
+            <ul>
+                <li>ช่างเชื่อมในอุตสาหกรรมต่าง ๆ เช่น การก่อสร้าง การผลิต และการซ่อมบำรุง</li>
+                <li>ผู้ควบคุมคุณภาพการเชื่อม</li>
+                <li>ผู้ประกอบการในธุรกิจที่เกี่ยวข้องกับการเชื่อมโลหะ</li>
+            </ul>
+        </div>
+    </section>
 
-    <div class="content">
-        <h2>แนวทางการประกอบอาชีพ</h2>
-        <ul>
-          <li>ช่างเชื่อมในอุตสาหกรรมต่าง ๆ เช่น การก่อสร้าง การผลิต และการซ่อมบำรุง</li>
-            <li>ผู้ควบคุมคุณภาพการเชื่อม</li>
-            <li>ผู้ประกอบการในธุรกิจที่เกี่ยวข้องกับการเชื่อมโลหะ</li>
-        </ul>
-    </div>
-</section>
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/technicchan.ac.th" class="fab fa-facebook"></a>
+            <a href="https://www.tiktok.com/@technicchan" class="fab fa-tiktok"></a>
+            <a href="https://www.instagram.com/technicchan_official" class="fab fa-instagram"></a>
+        </div>
 
-<footer>
-    <p>วิทยาลัยเทคนิคจันทบุรี &copy; 2024</p>
-</footer>
+        <div class="contact-info">
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>85 ซอย จันทคามวิถี ตำบลวัดใหม่ อำเภอเมืองจันทบุรี จันทบุรี 22000</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>โทรศัพท์: 0-3931-1198</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span>E-mail: saraban@technicchan.ac.th</span>
+            </div>
+        </div>
 
+        <div class="copyright">
+            <p>&copy; 2024 วิทยาลัยเทคนิคจันทบุรี</p>
+        </div>
+    </footer>
 </body>
 </html>
