@@ -326,19 +326,19 @@
             <a href="https://www.instagram.com/technicchan_official" class="fab fa-instagram"></a>
         </div>
 
-      <div class="contact-info">
+        <div class="contact-info">
             <div class="info-item">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>85 ซอย จันทคามวิถี ตำบลวัดใหม่ อำเภอเมืองจันทบุรี จันทบุรี 22000</span>
-          </div>
-          <div class="info-item">
-              <i class="fas fa-phone-alt"></i>
-              <span>โทรศัพท์: 0-3931-1198</span>
-          </div>
-          <div class="info-item">
-              <i class="fas fa-envelope"></i>
-              <span>E-mail: saraban@technicchan.ac.th</span>
-          </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>โทรศัพท์: 0-3931-1198</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span>E-mail: saraban@technicchan.ac.th</span>
+            </div>
         </div>
 
         <div class="copyright">
@@ -353,7 +353,7 @@
         }
 
         function toggleSubMenu(event) {
-            event.preventDefault();
+            event.preventDefault(); // ป้องกันการเปลี่ยนเส้นทางเมื่อคลิก
             const submenu = document.getElementById('submenu');
             submenu.classList.toggle('show');
         }
